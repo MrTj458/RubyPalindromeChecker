@@ -7,8 +7,7 @@ class PalindromeChecker
     puts "Type quit to stop"
     user_input = gets.chomp.downcase
     exit if user_input == "quit"
-    is_palindrome = check_for_palindrome(user_input)
-    if is_palindrome
+    if check_for_palindrome(user_input)
       puts "It is a palindrome"
     else
       puts "It is not a palindrome"
@@ -17,17 +16,18 @@ class PalindromeChecker
 
   def check_for_palindrome(user_input)
     is_palindrome = false
+
     user_input = remove_special_characters(user_input)
-    reversed_string = reverse_string(user_input)
-    string_to_check = remove_special_characters(reversed_string)
-    if string_to_check == user_input
+    if reverse_string(user_input) == user_input
       is_palindrome = true
     end
+
     return is_palindrome
   end
 
   def reverse_string(string)
     new_string = []
+
     string_array = string.split('')
     string_array.each do |letter|
       new_string.unshift(letter)
